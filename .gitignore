@@ -1,0 +1,11 @@
+.DS_Store
+analysis/
+output/
+tmp/
+qa-*.png
+design-comparison*.png
+design-implementation*.png
+design-reference-selected.png
+implementation-*.png
+capstone-project-*.png
+design-qa.md
