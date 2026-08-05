@@ -4,6 +4,13 @@
  */
 window.ARTICLES = [
   {
+    title: "Cinderella Mock Court Report",
+    summary: "Building a complete fictional detention report from interviews, records, observations, evidence, and a carefully aligned 1950 timeline.",
+    href: "articles/cinderella-mock-court-report.html",
+    icon: "fa-solid fa-scale-balanced",
+    published: true,
+  },
+  {
     title: "Youth Mental Health SQL Analysis",
     summary: "Exploring protective and risk factors in the CDC’s 2023 youth survey.",
     href: "analysis/youth-mental-health/README.md",

@@ -582,6 +582,238 @@ blockquote {
   line-height: 1.65;
 }
 
+.article-hero--court-report {
+  grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+}
+
+.article-hero--court-report h1 {
+  font-size: clamp(4rem, 6.6vw, 7.4rem);
+}
+
+.article-hero__figure--court-report {
+  transform: rotate(1deg);
+}
+
+.court-file {
+  position: relative;
+  min-height: 590px;
+  padding: clamp(2rem, 4vw, 3.6rem);
+  overflow: hidden;
+  border: 8px solid rgba(255, 253, 248, 0.96);
+  border-radius: 10px 58px 18px 44px;
+  background:
+    linear-gradient(90deg, transparent 0 52px, rgba(240, 79, 66, 0.24) 52px 54px, transparent 54px),
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(18, 94, 232, 0.11) 31px 32px),
+    #fffdf8;
+  box-shadow: var(--shadow);
+}
+
+.court-file__tab {
+  width: fit-content;
+  margin: -1rem 0 1.8rem auto;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: var(--marigold);
+  color: var(--ink);
+  font-family: var(--hand);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transform: rotate(2deg);
+}
+
+.court-file__header {
+  padding-bottom: 1.2rem;
+  border-bottom: 3px double var(--ink);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.court-file__header span {
+  display: block;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.court-file__header strong {
+  display: block;
+  margin-top: 0.65rem;
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.court-file__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 1.7rem 0;
+  border: 1px solid rgba(7, 29, 59, 0.28);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.court-file__facts div {
+  padding: 0.8rem;
+}
+
+.court-file__facts div + div {
+  border-left: 1px solid rgba(7, 29, 59, 0.2);
+}
+
+.court-file__facts dt {
+  color: var(--teal);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.court-file__facts dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  line-height: 1.1;
+}
+
+.court-file__sections {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.court-file__sections span {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0.7rem 1rem 0.7rem 2.5rem;
+  border-bottom: 1px solid rgba(7, 29, 59, 0.18);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.court-file__sections span::before {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: -1.5rem;
+  margin-right: 0.8rem;
+  border: 2px solid var(--coral);
+  content: "";
+  transform: rotate(-4deg);
+}
+
+.court-file > p {
+  width: fit-content;
+  margin: 1.8rem 0 0 auto;
+  color: var(--coral);
+  font-family: var(--hand);
+  font-size: 1.3rem;
+  font-weight: 600;
+  transform: rotate(-2deg);
+}
+
+.court-report-requirements {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.court-report-requirements article {
+  min-height: 205px;
+  padding: 1.5rem;
+  border: 1px solid rgba(7, 29, 59, 0.1);
+  border-radius: 30px 12px 28px 16px;
+  background: rgba(18, 94, 232, 0.055);
+}
+
+.court-report-requirements article:nth-child(2) {
+  background: rgba(15, 156, 150, 0.08);
+}
+
+.court-report-requirements article:nth-child(3) {
+  background: rgba(255, 178, 16, 0.1);
+}
+
+.court-report-requirements article:nth-child(4) {
+  background: rgba(250, 75, 68, 0.07);
+}
+
+.court-report-requirements article > span {
+  color: var(--coral);
+  font-family: var(--hand);
+  font-size: 1.35rem;
+}
+
+.court-report-requirements h3 {
+  margin: 0.3rem 0 0.55rem;
+  font-family: var(--display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.court-report-requirements p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.court-report-process {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 2.2rem;
+}
+
+.court-report-process div {
+  display: flex;
+  min-height: 170px;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 45% 55% 48% 52% / 54% 44% 56% 46%;
+  background: var(--ink);
+  color: white;
+  text-align: center;
+}
+
+.court-report-process div:nth-child(2) {
+  background: var(--teal);
+}
+
+.court-report-process div:nth-child(3) {
+  background: var(--blue);
+}
+
+.court-report-process div:nth-child(4) {
+  background: var(--coral);
+}
+
+.court-report-process strong {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.court-report-process span {
+  margin-top: 0.45rem;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.article-body .court-report-note {
+  margin-top: 2.25rem;
+  padding: 1.4rem 1.6rem;
+  border-left: 0.45rem solid var(--coral);
+  background: rgba(240, 79, 66, 0.07);
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.article-footer--court-report {
+  border-color: var(--blue);
+}
+
 @media (max-width: 900px) {
   .article-page {
     background-size: auto 100%;
@@ -596,6 +828,10 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
+  .article-hero--court-report {
+    grid-template-columns: 1fr;
+  }
+
   .article-hero__figure {
     max-width: 760px;
   }
@@ -603,6 +839,15 @@ blockquote {
   .article-hero__figure--capstone {
     width: min(100%, 680px);
     margin-inline: auto;
+  }
+
+  .article-hero__figure--court-report {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .court-report-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .article-layout {
@@ -659,6 +904,36 @@ blockquote {
 
   .capstone-map {
     min-height: 500px;
+  }
+
+  .court-file {
+    min-height: 520px;
+    padding: 1.5rem;
+    border-width: 4px;
+  }
+
+  .court-file__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .court-file__facts div + div {
+    border-top: 1px solid rgba(7, 29, 59, 0.2);
+    border-left: 0;
+  }
+
+  .court-report-requirements,
+  .court-report-process {
+    grid-template-columns: 1fr;
+  }
+
+  .court-report-requirements article {
+    min-height: auto;
+    border-radius: 24px;
+  }
+
+  .court-report-process div {
+    min-height: 125px;
+    border-radius: 24px;
   }
 
   .article-hero__figure--capstone figcaption {
