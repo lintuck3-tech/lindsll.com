@@ -1,6 +1,7 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
-const navLinks = [...siteNav.querySelectorAll('a[href^="#"]')];
+const menuNavLinks = [...siteNav.querySelectorAll("a")];
+const navLinks = menuNavLinks.filter((link) => link.getAttribute("href")?.startsWith("#"));
 const articleList = document.querySelector("#article-list");
 const articleEmpty = document.querySelector("#article-empty");
 
@@ -22,7 +23,7 @@ menuToggle.addEventListener("click", () => {
   siteNav.classList.toggle("is-open", !isOpen);
 });
 
-navLinks.forEach((link) => {
+menuNavLinks.forEach((link) => {
   link.addEventListener("click", () => {
     menuToggle.setAttribute("aria-expanded", "false");
     siteNav.classList.remove("is-open");
@@ -69,7 +70,7 @@ document.querySelectorAll(".reveal").forEach((element) => {
 });
 
 const articles = Array.isArray(window.ARTICLES)
-  ? window.ARTICLES.filter((article) => article.published !== false)
+  ? window.ARTICLES.filter((article) => article.published !== false).slice(0, 3)
   : [];
 
 if (articles.length > 0) {

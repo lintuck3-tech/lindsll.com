@@ -323,6 +323,160 @@ blockquote {
   margin-top: 0;
 }
 
+.directory-hero {
+  max-width: 950px;
+  padding: clamp(5rem, 11vw, 10rem) clamp(1.5rem, 5vw, 5rem) clamp(3.5rem, 8vw, 7rem);
+}
+
+.directory-hero h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(4.8rem, 11vw, 10rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+}
+
+.directory-hero h1 span {
+  color: var(--coral);
+}
+
+.directory-hero > p:last-child {
+  max-width: 650px;
+  margin: 1.8rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.65;
+}
+
+.project-directory,
+.field-note-board {
+  margin-bottom: clamp(4rem, 9vw, 8rem);
+  padding: clamp(2rem, 5vw, 4.5rem);
+  border: 7px solid var(--coral);
+  border-radius: 19% 24% 15% 23% / 11% 14% 10% 16%;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.project-directory .section-heading h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+  font-weight: 400;
+  line-height: 0.85;
+}
+
+.project-directory .section-heading p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.project-directory .article-list {
+  margin-top: 2.5rem;
+}
+
+.project-directory .article-row {
+  min-height: 134px;
+  grid-template-columns: 82px 1fr 24px;
+  gap: 1.4rem;
+}
+
+.project-directory .article-row__icon {
+  width: 72px;
+  height: 72px;
+  font-size: 2rem;
+}
+
+.project-directory .article-row h3 {
+  font-size: clamp(1.65rem, 2.7vw, 2.45rem);
+}
+
+.project-directory .article-row__body p {
+  max-width: 800px;
+  font-size: 0.95rem;
+}
+
+.project-directory .article-row__link {
+  font-size: 1.5rem;
+}
+
+.field-note-board {
+  border-color: var(--teal);
+}
+
+.field-note-board > div:first-child {
+  max-width: 780px;
+}
+
+.field-note-board h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.field-note-board > div:first-child > p:last-child {
+  max-width: 720px;
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.field-note-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.field-note-grid article {
+  min-height: 265px;
+  padding: 1.6rem;
+  border: 1px solid rgba(7, 29, 59, 0.1);
+  border-radius: 37% 19% 31% 24% / 22% 28% 18% 29%;
+  background: rgba(15, 156, 150, 0.07);
+}
+
+.field-note-grid article:nth-child(2) {
+  background: rgba(18, 94, 232, 0.06);
+}
+
+.field-note-grid article:nth-child(3) {
+  background: rgba(255, 178, 16, 0.1);
+}
+
+.field-note-grid i {
+  color: var(--teal);
+  font-size: 2rem;
+}
+
+.field-note-grid article:nth-child(2) i {
+  color: var(--blue);
+}
+
+.field-note-grid article:nth-child(3) i {
+  color: var(--marigold);
+}
+
+.field-note-grid h3 {
+  margin: 1.5rem 0 0.6rem;
+  font-family: var(--display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.field-note-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .article-hero--capstone {
   grid-template-columns: minmax(0, 1.12fr) minmax(440px, 0.88fr);
 }
@@ -858,6 +1012,14 @@ blockquote {
   .article-outline {
     position: static;
   }
+
+  .field-note-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-note-grid article {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 620px) {
@@ -973,5 +1135,48 @@ blockquote {
   .article-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .directory-hero {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .directory-hero h1 {
+    font-size: clamp(4.2rem, 20vw, 6rem);
+  }
+
+  .project-directory,
+  .field-note-board {
+    padding: 2.4rem 1.25rem;
+    border-width: 4px;
+    border-radius: 30px;
+  }
+
+  .project-directory .article-row {
+    grid-template-columns: 58px 1fr 18px;
+    gap: 0.75rem;
+  }
+
+  .project-directory .article-row__icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.35rem;
+  }
+
+  .project-directory .article-row h3 {
+    font-size: 1.42rem;
+  }
+
+  .project-directory .article-row__body p {
+    font-size: 0.82rem;
+  }
+
+  .field-note-grid {
+    margin-top: 2rem;
+  }
+
+  .field-note-grid article {
+    padding: 1.35rem;
+    border-radius: 24px;
   }
 }

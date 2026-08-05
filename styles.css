@@ -500,6 +500,19 @@ article[id] {
   transform: rotate(10deg);
 }
 
+.section-heading__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-heading__link:hover,
+.section-heading__link:focus-visible {
+  color: var(--coral);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 7px;
+}
+
 .section-heading--photo h2::after {
   background: var(--blue);
 }
@@ -606,6 +619,10 @@ article[id] {
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
+}
+
+.field-notes__link--projects {
+  margin-top: 18px;
 }
 
 .carousel {

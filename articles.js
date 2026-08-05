@@ -11,13 +11,6 @@ window.ARTICLES = [
     published: true,
   },
   {
-    title: "Youth Mental Health SQL Analysis",
-    summary: "Exploring protective and risk factors in the CDC’s 2023 youth survey.",
-    href: "analysis/youth-mental-health/README.md",
-    icon: "fa-solid fa-chart-column",
-    published: true,
-  },
-  {
     title: "Personal Portfolio Website",
     summary: "Designing and building a professional site with personality.",
     href: "articles/example-project.html",
