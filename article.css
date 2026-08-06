@@ -406,25 +406,12 @@ blockquote {
   border-color: var(--teal);
 }
 
-.field-note-board > div:first-child {
+.field-note-board__intro {
   max-width: 780px;
 }
 
-.field-note-board h2 {
+.field-note-board__intro .section-number {
   margin: 0;
-  font-family: var(--display);
-  font-size: clamp(3.5rem, 6vw, 5.8rem);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 0.9;
-}
-
-.field-note-board > div:first-child > p:last-child {
-  max-width: 720px;
-  margin: 1.4rem 0 0;
-  color: var(--muted);
-  font-size: clamp(1.02rem, 1.5vw, 1.22rem);
-  line-height: 1.7;
 }
 
 .field-note-grid {
