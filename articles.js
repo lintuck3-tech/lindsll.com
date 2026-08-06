@@ -12,7 +12,7 @@ window.ARTICLES = [
   },
   {
     title: "Personal Portfolio Website",
-    summary: "Designing and building a professional site with personality.",
+    summary: "Designing and building a professional site with personality and AI.",
     href: "articles/example-project.html",
     icon: "fa-solid fa-laptop-code",
     published: true,
