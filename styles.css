@@ -70,7 +70,8 @@ img {
 .portfolio-canvas {
   position: relative;
   width: min(100%, 864px);
-  height: 2031px;
+  min-height: 2200px;
+  height: auto;
   margin: 0 auto;
   overflow: clip;
   background-color: var(--ivory);
@@ -822,7 +823,8 @@ article[id] {
 .learning {
   display: grid;
   width: 834px;
-  height: 360px;
+  min-height: 360px;
+  height: auto;
   grid-template-columns: 260px 1fr;
   align-items: center;
   gap: 4px;
