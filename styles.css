@@ -154,25 +154,6 @@ article[id] {
   white-space: nowrap;
 }
 
-.site-nav a::after {
-  position: absolute;
-  right: 0;
-  bottom: -7px;
-  left: 0;
-  height: 2px;
-  background: var(--teal);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
-}
-
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after,
-.site-nav a.is-current::after {
-  transform: scaleX(1);
-}
-
 .linkedin-button {
   display: inline-flex;
   min-height: 32px;

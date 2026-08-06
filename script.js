@@ -4,6 +4,102 @@ const menuNavLinks = [...siteNav.querySelectorAll("a")];
 const navLinks = menuNavLinks.filter((link) => link.getAttribute("href")?.startsWith("#"));
 const articleList = document.querySelector("#article-list");
 const articleEmpty = document.querySelector("#article-empty");
+const toggleLabel = menuToggle.querySelector("span");
+const toggleIcon = menuToggle.querySelector("i");
+const FOCUSABLE_NAV_SELECTOR =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])';
+
+const setMenuState = (isOpen) => {
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  siteNav.classList.toggle("is-open", isOpen);
+  menuToggle.setAttribute("aria-label", isOpen ? "Close primary navigation" : "Open primary navigation");
+  if (toggleLabel) {
+    toggleLabel.textContent = isOpen ? "Close" : "Menu";
+  }
+  if (toggleIcon) {
+    toggleIcon.classList.remove("fa-bars", "fa-xmark");
+    toggleIcon.classList.add(isOpen ? "fa-xmark" : "fa-bars");
+  }
+};
+
+const getNavFocusables = () =>
+  [...siteNav.querySelectorAll(FOCUSABLE_NAV_SELECTOR)].filter((node) => !node.disabled);
+
+const trapMenuFocus = (event) => {
+  const focusable = getNavFocusables();
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const isShiftTab = event.shiftKey;
+
+  if (!isShiftTab && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+  if (isShiftTab && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  }
+};
+
+const closeMenu = () => {
+  setMenuState(false);
+};
+
+const openMenu = () => {
+  setMenuState(true);
+  const focusable = getNavFocusables();
+  if (focusable.length > 0) {
+    focusable[0].focus();
+  }
+};
+
+const handleMenuToggle = () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  if (isOpen) {
+    closeMenu();
+    menuToggle.focus();
+  } else {
+    openMenu();
+  }
+};
+
+const handleMenuDocumentKeydown = (event) => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  if (!isOpen) return;
+
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeMenu();
+    menuToggle.focus();
+    return;
+  }
+
+  if (event.key === "Tab") {
+    trapMenuFocus(event);
+  }
+};
+
+const handleOutsideClick = (event) => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  if (!isOpen) return;
+  if (event.target.closest(".site-nav") || event.target.closest(".menu-toggle")) return;
+  closeMenu();
+};
+
+setMenuState(false);
+
+menuToggle.addEventListener("click", handleMenuToggle);
+menuToggle.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+    event.preventDefault();
+    handleMenuToggle();
+  }
+});
+
+document.addEventListener("click", handleOutsideClick);
+document.addEventListener("keydown", handleMenuDocumentKeydown);
 
 const updateCanvasZoom = () => {
   const designWidth = 864;
@@ -17,16 +113,9 @@ const updateCanvasZoom = () => {
 window.addEventListener("resize", updateCanvasZoom);
 updateCanvasZoom();
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", String(!isOpen));
-  siteNav.classList.toggle("is-open", !isOpen);
-});
-
 menuNavLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    menuToggle.setAttribute("aria-expanded", "false");
-    siteNav.classList.remove("is-open");
+    closeMenu();
   });
 });
 
@@ -107,26 +196,38 @@ const dotsContainer = carousel.querySelector(".carousel__dots");
 const thumbsContainer = carousel.querySelector(".carousel__thumbs");
 let activeSlide = 0;
 
+const loadSlideImage = (index) => {
+  const image = slides[index]?.querySelector("img[data-src]");
+  if (!image) return;
+
+  image.src = image.dataset.src;
+  image.removeAttribute("data-src");
+};
+
 const renderThumbnails = () => {
-  thumbsContainer.innerHTML = "";
   slides.forEach((slide, index) => {
     const sourceImage = slide.querySelector("img");
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `carousel__thumb${index === activeSlide ? " is-active" : ""}`;
+    button.className = "carousel__thumb";
+    button.dataset.slideIndex = String(index);
     button.setAttribute("aria-label", `Show photograph ${index + 1}`);
-    button.setAttribute("aria-current", index === activeSlide ? "true" : "false");
     const image = sourceImage.cloneNode();
+    image.src = sourceImage.dataset.thumbnail;
     image.alt = "";
-    image.removeAttribute("loading");
+    image.removeAttribute("data-src");
+    image.removeAttribute("data-thumbnail");
+    image.width = 320;
+    image.height = Math.round((320 * Number(sourceImage.height)) / Number(sourceImage.width));
+    image.loading = "lazy";
     button.appendChild(image);
-    button.addEventListener("click", () => showSlide(index));
     thumbsContainer.appendChild(button);
   });
 };
 
 const showSlide = (index) => {
   activeSlide = (index + slides.length) % slides.length;
+  loadSlideImage(activeSlide);
   slides.forEach((slide, slideIndex) => {
     slide.classList.toggle("is-active", slideIndex === activeSlide);
   });
@@ -135,7 +236,11 @@ const showSlide = (index) => {
     dot.classList.toggle("is-active", isActive);
     dot.setAttribute("aria-current", isActive ? "true" : "false");
   });
-  renderThumbnails();
+  [...thumbsContainer.children].forEach((thumbnail, thumbnailIndex) => {
+    const isActive = thumbnailIndex === activeSlide;
+    thumbnail.classList.toggle("is-active", isActive);
+    thumbnail.setAttribute("aria-current", isActive ? "true" : "false");
+  });
   const activeThumbnail = thumbsContainer.children[activeSlide];
   if (activeThumbnail) {
     const centeredPosition =
@@ -148,13 +253,25 @@ const showSlide = (index) => {
   }
 };
 
-slides.forEach((slide, index) => {
+slides.forEach((_slide, index) => {
   const dot = document.createElement("button");
   dot.type = "button";
   dot.className = "carousel__dot";
   dot.setAttribute("aria-label", `Show photograph ${index + 1}`);
-  dot.addEventListener("click", () => showSlide(index));
   dotsContainer.appendChild(dot);
+});
+
+dotsContainer.addEventListener("click", (event) => {
+  const dot = event.target.closest(".carousel__dot");
+  if (!dot) return;
+  showSlide([...dotsContainer.children].indexOf(dot));
+});
+
+renderThumbnails();
+thumbsContainer.addEventListener("click", (event) => {
+  const thumbnail = event.target.closest(".carousel__thumb");
+  if (!thumbnail) return;
+  showSlide(Number(thumbnail.dataset.slideIndex));
 });
 
 previousButton.addEventListener("click", () => showSlide(activeSlide - 1));
