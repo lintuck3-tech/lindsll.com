@@ -374,7 +374,7 @@ blockquote {
 }
 
 .project-directory .article-list {
-  margin-top: 2.5rem;
+  margin-top: 0;
 }
 
 .project-directory .article-row {
