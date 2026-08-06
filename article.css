@@ -377,6 +377,15 @@ blockquote {
   margin-top: 0;
 }
 
+.project-directory__icon {
+  margin-bottom: 1rem;
+  color: var(--coral);
+  font-size: 38px;
+  line-height: 1;
+  text-align: right;
+  transform: rotate(10deg);
+}
+
 .project-directory .article-row {
   min-height: 134px;
   grid-template-columns: 82px 1fr 24px;
