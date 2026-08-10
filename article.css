@@ -249,6 +249,14 @@
   line-height: 1.72;
 }
 
+.portfolio-project-page .article-body section > p:not(.section-number) {
+  max-width: 690px;
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+  line-height: 1.72;
+}
+
 blockquote {
   padding: 2rem 0 2rem clamp(1.5rem, 4vw, 3rem);
   margin: 3rem 0 0;
