@@ -257,6 +257,14 @@
   line-height: 1.72;
 }
 
+.capstone-page .article-body section > p:not(.section-number):not(.capstone-note) {
+  max-width: 690px;
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+  line-height: 1.72;
+}
+
 blockquote {
   padding: 2rem 0 2rem clamp(1.5rem, 4vw, 3rem);
   margin: 3rem 0 0;
@@ -817,13 +825,13 @@ blockquote {
 }
 
 .capstone-map__node--pea {
-  bottom: 5%;
+  bottom: 13%;
   right: 18%;
   border-radius: 47% 53% 58% 42% / 57% 48% 52% 43%;
 }
 
 .capstone-map__node--emdr {
-  bottom: 7%;
+  bottom: 15%;
   left: 5%;
   border-radius: 57% 43% 42% 58% / 44% 59% 41% 56%;
 }
