@@ -813,20 +813,21 @@ blockquote {
 }
 
 .capstone-map__node--tfcbt {
-  top: 5%;
-  right: 7%;
+  top: 2%;
+  right: 9%;
   border-radius: 52% 48% 55% 45% / 42% 58% 44% 56%;
 }
 
 .capstone-map__node--cpp {
-  top: 40%;
-  right: 3%;
+  top: 42%;
+  right: 1%;
   border-radius: 58% 42% 47% 53% / 50% 41% 59% 50%;
 }
 
 .capstone-map__node--pea {
+  width: 26%;
   bottom: 13%;
-  right: 18%;
+  right: 8%;
   border-radius: 47% 53% 58% 42% / 57% 48% 52% 43%;
 }
 

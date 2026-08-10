@@ -5,7 +5,7 @@
 window.ARTICLES = [
   {
     title: "A Cinderella Detention Report",
-    summary: "Building a complete fictional detention report from interviews, records, observations, evidence, and a carefully aligned 1950 timeline.",
+    summary: "A fictional child-welfare detention report built from interviews, records, observations, and evidence.",
     href: "articles/cinderella-mock-court-report.html",
     icon: "fa-solid fa-scale-balanced",
     published: true,
