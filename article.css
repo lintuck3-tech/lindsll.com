@@ -532,6 +532,8 @@ blockquote {
 }
 
 .experience-timeline__heading > i {
+  flex: 0 0 auto;
+  margin-right: clamp(1rem, 2.5vw, 2rem);
   color: var(--blue);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   transform: rotate(-10deg);
