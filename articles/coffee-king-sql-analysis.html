@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A learning-focused SQL and location-intelligence case study using Nashville Yelp data to recommend where, when, and how a fictitious coffee shop should open."
+    />
+    <meta name="theme-color" content="#f7f4ed" />
+    <title>Coffee King SQL Analysis | Lindsey Tuck</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../styles.css?v=20260805-2" />
+    <link rel="stylesheet" href="../article.css?v=20260810-5" />
+    <link rel="stylesheet" href="../coffee-king.css?v=20260811-1" />
+  </head>
+  <body class="article-page coffee-king-page">
+    <a class="skip-link" href="#article-content">Skip to project</a>
+
+    <header class="article-header">
+      <a class="brand" href="../index.html" aria-label="Lindsey Tuck, home">
+        <span class="brand__name">Lindsey Tuck</span>
+        <span class="brand__role">Child-Safety and Investigation Professional</span>
+      </a>
+      <nav aria-label="Project navigation">
+        <a class="article-back-link" href="../index.html#projects">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          Projects
+        </a>
+        <a
+          class="linkedin-button"
+          href="https://www.linkedin.com/in/lindsey-tuck"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View LinkedIn
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </header>
+
+    <main id="article-content" class="article-shell">
+      <article>
+        <header class="article-hero article-hero--coffee">
+          <div class="article-hero__copy">
+            <p class="eyebrow">SQL case study · Location intelligence</p>
+            <h1>Coffee King<span>.</span></h1>
+            <p class="article-deck">
+              Created for learning purposes, this case study uses Nashville Yelp
+              data to decide where a fictitious coffee shop should open, when it
+              should operate, and which amenities matter most.
+            </p>
+            <p class="article-byline">SQL · Hex · Yelp Nashville dataset · 2026</p>
+            <div class="article-hero__actions">
+              <a
+                class="article-paper-link"
+                href="https://app.hex.tech/019fa5ee-2a6e-74b8-8ef4-927ae59170bd/app/SQL-CAPSTONE-Coffee-King-033xQwDNTnfJDkXjQvHopm/latest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore the full analysis
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <figure class="article-hero__figure article-hero__figure--coffee">
+            <div class="coffee-snapshot" aria-label="Analysis summary: 151 coffee shops, 817,283 check-ins, and a leading opportunity index of 1.30">
+              <div class="coffee-snapshot__marks" aria-hidden="true">
+                <span><i class="fa-solid fa-code"></i> SQL</span>
+                <i class="fa-solid fa-crown"></i>
+                <i class="fa-solid fa-chart-column"></i>
+              </div>
+              <div class="coffee-cup" aria-hidden="true">
+                <span class="coffee-cup__steam coffee-cup__steam--one"></span>
+                <span class="coffee-cup__steam coffee-cup__steam--two"></span>
+                <div class="coffee-cup__body"><span></span></div>
+                <div class="coffee-cup__saucer"></div>
+              </div>
+              <div class="coffee-snapshot__stats">
+                <div><strong>151</strong><span>coffee shops</span></div>
+                <div><strong>817,283</strong><span>check-ins</span></div>
+                <div><strong>1.30</strong><span>leading index</span></div>
+              </div>
+            </div>
+            <figcaption>Nashville supply, demand, timing, and amenities in one decision model.</figcaption>
+          </figure>
+        </header>
+
+        <div class="article-layout coffee-article-layout">
+          <aside class="article-outline" aria-label="Project outline">
+            <p>In this project</p>
+            <ol>
+              <li><a href="#question">The business question</a></li>
+              <li><a href="#approach">How I approached it</a></li>
+              <li><a href="#where">Where to open</a></li>
+              <li><a href="#when">When to open</a></li>
+              <li><a href="#offer">What to offer</a></li>
+              <li><a href="#recommendation">Recommendation &amp; limits</a></li>
+            </ol>
+            <i class="fa-solid fa-crown coffee-outline-crown" aria-hidden="true"></i>
+          </aside>
+
+          <div class="article-body">
+            <section id="question">
+              <p class="section-number">01</p>
+              <h2>The business question</h2>
+              <p>
+                Where in Nashville should a new coffee shop open to meet the
+                strongest demand? And once it opens, which hours and amenities are
+                most likely to help it succeed? I treated those as connected
+                decisions rather than three separate analyses.
+              </p>
+            </section>
+
+            <section id="approach">
+              <p class="section-number">02</p>
+              <h2>How I approached it</h2>
+              <p>
+                I used SQL in Hex to explore five related Yelp tables covering
+                6,971 Nashville businesses. I classified genuine coffee shops using
+                categories, business names, and coffee language in reviews; mapped
+                them to Metro planning areas; then compared supply with 817,283
+                check-ins, opening hours, and reported amenities.
+              </p>
+              <blockquote>
+                The goal was not just to rank neighborhoods. It was to turn messy,
+                imperfect data into a decision someone could act on.
+              </blockquote>
+              <div class="coffee-method" aria-label="Analysis workflow">
+                <div><span>01</span><strong>Classify</strong><small>Identify 151 open coffee shops</small></div>
+                <div><span>02</span><strong>Map</strong><small>Join locations to planning areas</small></div>
+                <div><span>03</span><strong>Compare</strong><small>Normalize foot traffic against supply</small></div>
+                <div><span>04</span><strong>Test</strong><small>Evaluate hours and amenities</small></div>
+              </div>
+            </section>
+
+            <section id="where">
+              <p class="section-number">03</p>
+              <h2>Where to open</h2>
+              <p>
+                Donelson–Hermitage–Old Hickory screens best. Its 588 businesses,
+                8 coffee shops, and 7,022 check-ins per shop produce the strongest
+                foot-traffic-to-coffee-supply balance in the county. The lead is
+                meaningful, but narrow enough to treat as a screening signal rather
+                than proof of unmet demand.
+              </p>
+              <div class="opportunity-ranking" aria-label="Top planning areas by foot-traffic-to-coffee-supply index">
+                <div class="opportunity-ranking__header">
+                  <div><span>Recommended area</span><strong>Donelson–Hermitage–Old Hickory</strong></div>
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                </div>
+                <ol>
+                  <li style="--score: 100%; --rank-color: var(--coral)"><span>1</span><strong>Donelson</strong><i></i><b>1.30</b></li>
+                  <li style="--score: 93.8%; --rank-color: var(--teal)"><span>2</span><strong>Downtown</strong><i></i><b>1.22</b></li>
+                  <li style="--score: 93.8%; --rank-color: var(--blue)"><span>3</span><strong>Southeast</strong><i></i><b>1.22</b></li>
+                  <li style="--score: 91.5%; --rank-color: var(--marigold)"><span>4</span><strong>Green Hills–Midtown</strong><i></i><b>1.19</b></li>
+                </ol>
+                <p>Index = share of citywide check-ins ÷ share of citywide coffee shops. Above 1.0 means traffic outpaces supply.</p>
+              </div>
+            </section>
+
+            <section id="when">
+              <p class="section-number">04</p>
+              <h2>When to open</h2>
+              <p>
+                Coffee demand peaks once, between 8 and 10am, while the median shop
+                does not open until 7am and coverage does not peak until 11am.
+                Demand runs ahead of open-hour supply from 6 to 11am, with the
+                widest gap at 9am.
+              </p>
+              <div class="morning-chart">
+                <div class="morning-chart__key" aria-hidden="true">
+                  <span><i class="key-line"></i> Demand</span>
+                  <span><i class="key-bar"></i> Open-hour supply</span>
+                </div>
+                <svg viewBox="0 0 760 330" role="img" aria-labelledby="morning-chart-title morning-chart-desc">
+                  <title id="morning-chart-title">Coffee demand compared with open-hour supply</title>
+                  <desc id="morning-chart-desc">Demand rises above supply from 6am through 11am and reaches its widest gap at 9am.</desc>
+                  <g class="chart-grid">
+                    <line x1="58" y1="260" x2="730" y2="260"></line>
+                    <line x1="58" y1="190" x2="730" y2="190"></line>
+                    <line x1="58" y1="120" x2="730" y2="120"></line>
+                    <line x1="58" y1="50" x2="730" y2="50"></line>
+                  </g>
+                  <g class="chart-bars">
+                    <rect x="78" y="235" width="40" height="25"></rect>
+                    <rect x="150" y="220" width="40" height="40"></rect>
+                    <rect x="222" y="195" width="40" height="65"></rect>
+                    <rect x="294" y="165" width="40" height="95"></rect>
+                    <rect class="chart-bars__peak" x="366" y="145" width="40" height="115"></rect>
+                    <rect x="438" y="132" width="40" height="128"></rect>
+                    <rect x="510" y="126" width="40" height="134"></rect>
+                    <rect x="582" y="140" width="40" height="120"></rect>
+                    <rect x="654" y="158" width="40" height="102"></rect>
+                  </g>
+                  <polyline class="chart-line" points="98,228 170,188 242,130 314,80 386,58 458,68 530,82 602,108 674,144"></polyline>
+                  <g class="chart-points">
+                    <circle cx="98" cy="228" r="6"></circle><circle cx="170" cy="188" r="6"></circle>
+                    <circle cx="242" cy="130" r="6"></circle><circle cx="314" cy="80" r="6"></circle>
+                    <circle class="chart-points__peak" cx="386" cy="58" r="8"></circle><circle cx="458" cy="68" r="6"></circle>
+                    <circle cx="530" cy="82" r="6"></circle><circle cx="602" cy="108" r="6"></circle><circle cx="674" cy="144" r="6"></circle>
+                  </g>
+                  <line class="chart-peak-line" x1="386" y1="58" x2="386" y2="260"></line>
+                  <g class="chart-labels">
+                    <text x="98" y="292">5am</text><text x="170" y="292">6am</text><text x="242" y="292">7am</text>
+                    <text x="314" y="292">8am</text><text class="chart-labels__peak" x="386" y="292">9am</text>
+                    <text x="458" y="292">10am</text><text x="530" y="292">11am</text><text x="602" y="292">12pm</text><text x="674" y="292">1pm</text>
+                  </g>
+                </svg>
+                <p><strong>Early hours are the opening.</strong> King Coffee can differentiate before much of the existing market is fully online.</p>
+              </div>
+            </section>
+
+            <section id="offer">
+              <p class="section-number">05</p>
+              <h2>What to offer</h2>
+              <p>
+                Amenities relate to engagement much more than ratings. Parking is
+                the clearest recurring signal, although the relationship should not
+                be read as causal because high-traffic businesses may also maintain
+                more complete Yelp profiles.
+              </p>
+              <div class="amenity-findings">
+                <article>
+                  <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
+                  <div><h3>Bike parking</h3><p><strong>+136%</strong> median reviews</p><p><strong>+117%</strong> median check-ins</p></div>
+                </article>
+                <article>
+                  <i class="fa-solid fa-square-parking" aria-hidden="true"></i>
+                  <div><h3>Parking lot</h3><p><strong>+171%</strong> median check-ins</p><p>Strongest single traffic lift</p></div>
+                </article>
+              </div>
+            </section>
+
+            <section id="recommendation">
+              <p class="section-number">06</p>
+              <h2>Recommendation &amp; limits</h2>
+              <div class="recommendation-grid">
+                <div>
+                  <h3><i class="fa-solid fa-crown" aria-hidden="true"></i> Recommendation</h3>
+                  <ul>
+                    <li>Prioritize Donelson–Hermitage–Old Hickory.</li>
+                    <li>Open early to capture the 6–11am demand window.</li>
+                    <li>Favor sites with convenient parking.</li>
+                    <li>Validate with current rent, traffic, and demographics.</li>
+                  </ul>
+                </div>
+                <aside>
+                  <h3>Read with care</h3>
+                  <p>
+                    Yelp check-ins span 2010 through January 2022 and measure
+                    general business traffic, not coffee demand alone. The index is
+                    a strong place to start a site search, not the last word on one.
+                  </p>
+                </aside>
+              </div>
+              <ul class="coffee-skills" aria-label="Skills demonstrated">
+                <li>SQL</li><li>Data cleaning</li><li>Spatial joins</li><li>Exploratory analysis</li><li>Data storytelling</li><li>Decision framing</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <footer class="article-footer article-footer--coffee">
+          <div>
+            <p class="eyebrow">End of project</p>
+            <h2>Turn messy data into a decision.</h2>
+          </div>
+          <a class="linkedin-button article-footer__button" href="../index.html#projects">
+            Back to all projects
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </footer>
+      </article>
+    </main>
+
+    <footer class="site-footer article-site-footer">
+      <p class="site-footer__note">Let’s keep learning.<br />Let’s keep making a difference.</p>
+      <nav aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#photography">Photography</a>
+        <a href="../index.html#learning">Learning</a>
+      </nav>
+      <a class="linkedin-button" href="https://www.linkedin.com/in/lindsey-tuck" target="_blank" rel="noreferrer">
+        View LinkedIn <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+    </footer>
+  </body>
+</html>

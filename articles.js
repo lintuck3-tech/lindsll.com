@@ -4,6 +4,13 @@
  */
 window.ARTICLES = [
   {
+    title: "Coffee King: Nashville Location Analysis",
+    summary: "A learning-focused SQL case study using Yelp data to recommend where a fictitious coffee shop should open, when it should operate, and which amenities matter.",
+    href: "articles/coffee-king-sql-analysis.html",
+    icon: "fa-solid fa-mug-hot",
+    published: true,
+  },
+  {
     title: "A Cinderella Detention Report",
     summary: "A fictional child-welfare detention report built from interviews, records, observations, and evidence.",
     href: "articles/cinderella-mock-court-report.html",
