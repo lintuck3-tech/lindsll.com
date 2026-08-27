@@ -31,7 +31,7 @@
     <header class="article-header">
       <a class="brand" href="../index.html" aria-label="Lindsey Tuck, home">
         <span class="brand__name">Lindsey Tuck</span>
-        <span class="brand__role">Child-Safety and Investigation Professional</span>
+        <span class="brand__role">Risk, Safety and Investigative Professional</span>
       </a>
       <nav aria-label="Project navigation">
         <a class="article-back-link" href="../index.html#projects">
@@ -54,12 +54,15 @@
       <article>
         <header class="article-hero article-hero--coffee">
           <div class="article-hero__copy">
-            <p class="eyebrow">SQL case study · Location intelligence</p>
+            <p class="eyebrow">SQL case study · Nashville Market Opportunity Analysis</p>
             <h1>Coffee King<span>.</span></h1>
             <p class="article-deck">
-              Created for learning purposes, this case study uses Nashville Yelp
-              data to decide where a fictitious coffee shop should open, when it
-              should operate, and which amenities matter most.
+              Using five Yelp tables and 817,283 Nashville check-ins, I built a SQL
+              decision model to compare foot traffic, coffee-shop supply, opening
+              hours, and amenities across Metro planning areas. The analysis
+              identified Donelson–Hermitage–Old Hickory as the strongest place to
+              begin a site search and pointed to an early-morning, parking-friendly
+              concept.
             </p>
             <p class="article-byline">SQL · Hex · Yelp Nashville dataset · 2026</p>
             <div class="article-hero__actions">
@@ -69,7 +72,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Explore the full analysis
+                View the SQL and full analysis
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
               </a>
             </div>
@@ -117,10 +120,11 @@
               <p class="section-number">01</p>
               <h2>The business question</h2>
               <p>
-                Where in Nashville should a new coffee shop open to meet the
-                strongest demand? And once it opens, which hours and amenities are
-                most likely to help it succeed? I treated those as connected
-                decisions rather than three separate analyses.
+                I wanted to know where a new Nashville coffee shop should begin
+                looking, when existing hours might leave a service gap, and which
+                amenities were associated with stronger engagement. Because Yelp
+                does not measure unmet coffee demand directly, I treated the project
+                as a way to narrow the search rather than make a final site decision.
               </p>
             </section>
 
@@ -128,14 +132,24 @@
               <p class="section-number">02</p>
               <h2>How I approached it</h2>
               <p>
-                I used SQL in Hex to explore five related Yelp tables covering
-                6,971 Nashville businesses. I also used Hex’s AI agent as a
-                vibe-coding partner, leading it through each step with clear prompts,
-                reviewing its work, and refining the analysis before moving forward.
-                Using that supervised workflow, I classified genuine coffee shops
-                using categories, business names, and coffee language in reviews;
-                mapped them to Metro planning areas; then compared supply with
-                817,283 check-ins, opening hours, and reported amenities.
+                I joined five Yelp tables covering 6,971 Nashville businesses. Yelp
+                categories initially identified 368 possible coffee businesses. I
+                used business names and coffee-related review language to narrow that
+                group to 225, then removed shops marked closed, leaving 151 open
+                coffee shops for the analysis.
+              </p>
+              <p>
+                I mapped businesses to Metro planning areas, separated 817,283
+                check-in timestamps into individual events, and compared each area’s
+                share of business activity with its share of coffee shops. I also
+                compared coffee-shop check-ins with recorded opening hours and tested
+                whether amenities were associated with differences in ratings,
+                reviews, and check-ins.
+              </p>
+              <p>
+                I used Hex’s AI agent to help draft and troubleshoot queries. I set
+                the analytical logic, reviewed the SQL and outputs, and refined the
+                analysis before using the results.
               </p>
               <blockquote>
                 The goal was not just to rank neighborhoods. It was to turn messy,
@@ -147,17 +161,29 @@
                 <div><span>03</span><strong>Compare</strong><small>Normalize foot traffic against supply</small></div>
                 <div><span>04</span><strong>Test</strong><small>Evaluate hours and amenities</small></div>
               </div>
+              <div class="classification-flow" aria-label="Coffee shop classification narrowed from 368 category candidates to 225 review-supported businesses and 151 open coffee shops">
+                <p>How the comparison group narrowed</p>
+                <div class="classification-flow__steps">
+                  <div><strong>368</strong><span>category candidates</span></div>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  <div><strong>225</strong><span>review-supported businesses</span></div>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  <div><strong>151</strong><span>open coffee shops</span></div>
+                </div>
+              </div>
             </section>
 
             <section id="where">
               <p class="section-number">03</p>
               <h2>Where to open</h2>
               <p>
-                Donelson–Hermitage–Old Hickory screens best. Its 588 businesses,
-                8 coffee shops, and 7,022 check-ins per shop produce the strongest
-                foot-traffic-to-coffee-supply balance in the county. The lead is
-                meaningful, but narrow enough to treat as a screening signal rather
-                than proof of unmet demand.
+                Donelson–Hermitage–Old Hickory ranked first in the initial screen.
+                Its 588 businesses, 8 coffee shops, and 7,022 check-ins per shop
+                produce the strongest foot-traffic-to-coffee-supply balance in the
+                county. Its 1.30 opportunity index means the area’s share of citywide
+                check-ins is 1.3 times its share of Nashville’s coffee shops. The lead
+                is meaningful, but narrow enough to treat as a screening signal
+                rather than proof of unmet demand.
               </p>
               <div class="opportunity-ranking" aria-label="Top planning areas by foot-traffic-to-coffee-supply index">
                 <div class="opportunity-ranking__header">
@@ -178,19 +204,21 @@
               <p class="section-number">04</p>
               <h2>When to open</h2>
               <p>
-                Coffee demand peaks once, between 8 and 10am, while the median shop
-                does not open until 7am and coverage does not peak until 11am.
-                Demand runs ahead of open-hour supply from 6 to 11am, with the
-                widest gap at 9am.
+                Among the 145 coffee shops with usable hours, the median schedule ran
+                from 7am to 6pm. Coffee-shop check-in activity rose sharply toward its
+                8 to 10am peak, while only 76% of weekday shops were open at 7am.
+                Check-in activity stayed ahead of recorded open-hour coverage from
+                6am through 11am, with the widest gap at 9am.
               </p>
               <div class="morning-chart">
+                <p class="morning-chart__sample"><strong>145 shops with usable hours</strong> out of 151 classified coffee shops</p>
                 <div class="morning-chart__key" aria-hidden="true">
-                  <span><i class="key-line"></i> Demand</span>
-                  <span><i class="key-bar"></i> Open-hour supply</span>
+                  <span><i class="key-line"></i> Coffee-shop check-ins</span>
+                  <span><i class="key-bar"></i> Recorded open-hour coverage</span>
                 </div>
                 <svg viewBox="0 0 760 330" role="img" aria-labelledby="morning-chart-title morning-chart-desc">
-                  <title id="morning-chart-title">Coffee demand compared with open-hour supply</title>
-                  <desc id="morning-chart-desc">Demand rises above supply from 6am through 11am and reaches its widest gap at 9am.</desc>
+                  <title id="morning-chart-title">Coffee-shop check-ins compared with recorded open-hour coverage</title>
+                  <desc id="morning-chart-desc">Coffee-shop check-in activity stays ahead of recorded open-hour coverage from 6am through 11am and reaches its widest gap at 9am.</desc>
                   <g class="chart-grid">
                     <line x1="58" y1="260" x2="730" y2="260"></line>
                     <line x1="58" y1="190" x2="730" y2="190"></line>
@@ -222,7 +250,7 @@
                     <text x="458" y="292">10am</text><text x="530" y="292">11am</text><text x="602" y="292">12pm</text><text x="674" y="292">1pm</text>
                   </g>
                 </svg>
-                <p><strong>Early hours are the opening.</strong> King Coffee can differentiate before much of the existing market is fully online.</p>
+                <p class="morning-chart__takeaway"><strong>Early hours are the opening.</strong> Coffee King can differentiate by opening earlier than a majority of the existing market.</p>
               </div>
             </section>
 
@@ -230,10 +258,16 @@
               <p class="section-number">05</p>
               <h2>What to offer</h2>
               <p>
-                Amenities relate to engagement much more than ratings. Parking is
-                the clearest recurring signal, although the relationship should not
-                be read as causal because high-traffic businesses may also maintain
-                more complete Yelp profiles.
+                Amenities were more closely associated with engagement than with star
+                ratings. Among shops with a recorded value, those reporting bike
+                parking had 136% more median reviews and 117% more median check-ins
+                than those reporting no bike parking. Shops reporting a parking lot
+                had 171% more median check-ins, the largest observed difference in the
+                analysis.
+              </p>
+              <p>
+                These findings show association, not causation. Busier shops may also
+                maintain more complete Yelp profiles.
               </p>
               <div class="amenity-findings">
                 <article>
@@ -242,33 +276,45 @@
                 </article>
                 <article>
                   <i class="fa-solid fa-square-parking" aria-hidden="true"></i>
-                  <div><h3>Parking lot</h3><p><strong>+171%</strong> median check-ins</p><p>Strongest single traffic lift</p></div>
+                  <div><h3>Parking lot</h3><p><strong>+171%</strong> median check-ins</p><p>Largest observed difference</p></div>
                 </article>
               </div>
+              <p class="amenity-comparison-note"><strong>Comparison:</strong> recorded yes versus recorded no. Missing Yelp values were excluded.</p>
             </section>
 
             <section id="recommendation">
               <p class="section-number">06</p>
               <h2>Recommendation &amp; limits</h2>
-              <div class="recommendation-grid">
-                <div>
-                  <h3><i class="fa-solid fa-crown" aria-hidden="true"></i> Recommendation</h3>
-                  <ul>
-                    <li>Prioritize Donelson–Hermitage–Old Hickory.</li>
-                    <li>Open early to capture the 6–11am demand window.</li>
-                    <li>Favor sites with convenient parking.</li>
-                    <li>Validate with current rent, traffic, and demographics.</li>
-                  </ul>
-                </div>
-                <aside>
-                  <h3>Read with care</h3>
-                  <p>
-                    Yelp check-ins span 2010 through January 2022 and measure
-                    general business traffic, not coffee demand alone. The index is
-                    a strong place to start a site search, not the last word on one.
-                  </p>
-                </aside>
+              <div class="recommendation-path" aria-label="Evidence, decision, and validation path">
+                <article>
+                  <span>01</span>
+                  <h3>Evidence</h3>
+                  <p>A 1.30 opportunity index, an early-morning coverage gap, and the strongest amenity differences around parking.</p>
+                </article>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <article>
+                  <span>02</span>
+                  <h3>Decision</h3>
+                  <p>I would prioritize Donelson–Hermitage–Old Hickory for more detailed site research, explore an opening time around 6am, and favor properties with convenient parking.</p>
+                </article>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <article>
+                  <span>03</span>
+                  <h3>Validate</h3>
+                  <p>Before selecting a location, I would compare current rent, traffic, competitors, and neighborhood demographics.</p>
+                </article>
               </div>
+              <aside class="recommendation-care">
+                <h3>Read with care</h3>
+                <p>
+                  Yelp check-ins span 2010 through January 2022 and measure
+                  historical business activity rather than coffee demand alone. The
+                  analysis also compares shops marked open in the January 2022
+                  snapshot with traffic accumulated over the full historical period.
+                  The findings should narrow a site search, not make the final
+                  decision.
+                </p>
+              </aside>
               <ul class="coffee-skills" aria-label="Skills demonstrated">
                 <li>SQL</li><li>Data cleaning</li><li>Spatial joins</li><li>Exploratory analysis</li><li>Data storytelling</li><li>Decision framing</li>
               </ul>
