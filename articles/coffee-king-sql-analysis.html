@@ -23,7 +23,7 @@
     />
     <link rel="stylesheet" href="../styles.css?v=20260805-2" />
     <link rel="stylesheet" href="../article.css?v=20260810-5" />
-    <link rel="stylesheet" href="../coffee-king.css?v=20260811-1" />
+    <link rel="stylesheet" href="../coffee-king.css?v=20260827-1" />
   </head>
   <body class="article-page coffee-king-page">
     <a class="skip-link" href="#article-content">Skip to project</a>
@@ -57,9 +57,10 @@
             <p class="eyebrow">SQL case study · Nashville Market Opportunity Analysis</p>
             <h1>Coffee King<span>.</span></h1>
             <p class="article-deck">
-              Using five Yelp tables and 817,283 Nashville check-ins, I built a SQL
-              decision model to compare foot traffic, coffee-shop supply, opening
-              hours, and amenities across Metro planning areas. The analysis
+              Using five Yelp tables and 817,283 check-ins across all Nashville
+              businesses, I built a SQL decision model to compare overall business
+              activity, coffee-shop supply, opening hours, and amenities across Metro
+              planning areas. The analysis
               identified Donelson–Hermitage–Old Hickory as the strongest place to
               begin a site search and pointed to an early-morning, parking-friendly
               concept.
@@ -79,7 +80,7 @@
           </div>
 
           <figure class="article-hero__figure article-hero__figure--coffee">
-            <div class="coffee-snapshot" aria-label="Analysis summary: 151 coffee shops, 817,283 check-ins, and a leading opportunity index of 1.30">
+            <div class="coffee-snapshot" aria-label="Analysis summary: 151 coffee shops, 817,283 check-ins across all Nashville businesses, and a leading opportunity index of 1.30">
               <div class="coffee-snapshot__marks" aria-hidden="true">
                 <span><i class="fa-solid fa-code"></i> SQL</span>
                 <i class="fa-solid fa-crown"></i>
@@ -93,7 +94,7 @@
               </div>
               <div class="coffee-snapshot__stats">
                 <div><strong>151</strong><span>coffee shops</span></div>
-                <div><strong>817,283</strong><span>check-ins</span></div>
+                <div><strong>817,283</strong><span>all-business check-ins</span></div>
                 <div><strong>1.30</strong><span>leading index</span></div>
               </div>
             </div>
@@ -140,11 +141,12 @@
               </p>
               <p>
                 I mapped businesses to Metro planning areas, separated 817,283
-                check-in timestamps into individual events, and compared each area’s
-                share of business activity with its share of coffee shops. I also
+                check-in timestamps from all Nashville businesses into individual
+                events, and compared each area’s share of those check-ins with its
+                share of coffee shops. I also
                 compared coffee-shop check-ins with recorded opening hours and tested
                 whether amenities were associated with differences in ratings,
-                reviews, and check-ins.
+                reviews, and coffee-shop check-ins.
               </p>
               <p>
                 I used Hex’s AI agent to help draft and troubleshoot queries. I set
@@ -152,23 +154,23 @@
                 analysis before using the results.
               </p>
               <blockquote>
-                The goal was not just to rank neighborhoods. It was to turn messy,
-                imperfect data into a decision someone could act on.
+                The analysis provides a consistent way to compare different areas
+                throughout Nashville, while keeping the limits of the Yelp data visible.
               </blockquote>
               <div class="coffee-method" aria-label="Analysis workflow">
                 <div><span>01</span><strong>Classify</strong><small>Identify 151 open coffee shops</small></div>
                 <div><span>02</span><strong>Map</strong><small>Join locations to planning areas</small></div>
-                <div><span>03</span><strong>Compare</strong><small>Normalize foot traffic against supply</small></div>
+                <div><span>03</span><strong>Compare</strong><small>Normalize all-business check-ins against coffee-shop supply</small></div>
                 <div><span>04</span><strong>Test</strong><small>Evaluate hours and amenities</small></div>
               </div>
               <div class="classification-flow" aria-label="Coffee shop classification narrowed from 368 category candidates to 225 review-supported businesses and 151 open coffee shops">
                 <p>How the comparison group narrowed</p>
                 <div class="classification-flow__steps">
-                  <div><strong>368</strong><span>category candidates</span></div>
+                  <div><strong>368</strong> <span>category candidates</span></div>
                   <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                  <div><strong>225</strong><span>review-supported businesses</span></div>
+                  <div><strong>225</strong> <span>review-supported businesses</span></div>
                   <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                  <div><strong>151</strong><span>open coffee shops</span></div>
+                  <div><strong>151</strong> <span>open coffee shops</span></div>
                 </div>
               </div>
             </section>
@@ -178,12 +180,15 @@
               <h2>Where to open</h2>
               <p>
                 Donelson–Hermitage–Old Hickory ranked first in the initial screen.
-                Its 588 businesses, 8 coffee shops, and 7,022 check-ins per shop
-                produce the strongest foot-traffic-to-coffee-supply balance in the
-                county. Its 1.30 opportunity index means the area’s share of citywide
-                check-ins is 1.3 times its share of Nashville’s coffee shops. The lead
-                is meaningful, but narrow enough to treat as a screening signal
-                rather than proof of unmet demand.
+                Its 588 businesses, 8 coffee shops, and ratio of 7,022 all-business
+                check-ins per coffee shop produce the strongest balance in the
+                county. Its 1.30 opportunity index means the area’s share of check-ins
+                across all Nashville businesses is 1.3 times its share of Nashville’s
+                coffee shops. That
+                result makes the area a strong candidate for further research. The
+                index suggests a slightly larger gap between general business activity
+                and coffee-shop supply than in the next-ranked areas, but Yelp data
+                alone cannot show whether that gap reflects unmet demand for coffee.
               </p>
               <div class="opportunity-ranking" aria-label="Top planning areas by foot-traffic-to-coffee-supply index">
                 <div class="opportunity-ranking__header">
@@ -196,7 +201,7 @@
                   <li style="--score: 93.8%; --rank-color: var(--blue)"><span>3</span><strong>Southeast</strong><i></i><b>1.22</b></li>
                   <li style="--score: 91.5%; --rank-color: var(--marigold)"><span>4</span><strong>Green Hills–Midtown</strong><i></i><b>1.19</b></li>
                 </ol>
-                <p>Index = share of citywide check-ins ÷ share of citywide coffee shops. Above 1.0 means traffic outpaces supply.</p>
+                <p>Index = the area’s share of check-ins across all Nashville businesses ÷ its share of Nashville coffee shops. Above 1.0 means the area has a larger share of overall business activity than coffee-shop supply.</p>
               </div>
             </section>
 
@@ -207,8 +212,8 @@
                 Among the 145 coffee shops with usable hours, the median schedule ran
                 from 7am to 6pm. Coffee-shop check-in activity rose sharply toward its
                 8 to 10am peak, while only 76% of weekday shops were open at 7am.
-                Check-in activity stayed ahead of recorded open-hour coverage from
-                6am through 11am, with the widest gap at 9am.
+                Coffee-shop check-in activity stayed ahead of recorded open-hour
+                coverage from 6am through 11am, with the widest gap at 9am.
               </p>
               <div class="morning-chart">
                 <p class="morning-chart__sample"><strong>145 shops with usable hours</strong> out of 151 classified coffee shops</p>
@@ -260,10 +265,10 @@
               <p>
                 Amenities were more closely associated with engagement than with star
                 ratings. Among shops with a recorded value, those reporting bike
-                parking had 136% more median reviews and 117% more median check-ins
+                parking had 136% more median reviews and 117% more median coffee-shop check-ins
                 than those reporting no bike parking. Shops reporting a parking lot
-                had 171% more median check-ins, the largest observed difference in the
-                analysis.
+                had 171% more median coffee-shop check-ins, the largest observed
+                difference in the analysis.
               </p>
               <p>
                 These findings show association, not causation. Busier shops may also
@@ -272,14 +277,14 @@
               <div class="amenity-findings">
                 <article>
                   <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
-                  <div><h3>Bike parking</h3><p><strong>+136%</strong> median reviews</p><p><strong>+117%</strong> median check-ins</p></div>
+                  <div><h3>Bike parking</h3><p><strong>+136%</strong> median reviews</p><p><strong>+117%</strong> median coffee-shop check-ins</p></div>
                 </article>
                 <article>
                   <i class="fa-solid fa-square-parking" aria-hidden="true"></i>
-                  <div><h3>Parking lot</h3><p><strong>+171%</strong> median check-ins</p><p>Largest observed difference</p></div>
+                  <div><h3>Parking lot</h3><p><strong>+171%</strong> median coffee-shop check-ins</p><p>Largest observed difference</p></div>
                 </article>
               </div>
-              <p class="amenity-comparison-note"><strong>Comparison:</strong> recorded yes versus recorded no. Missing Yelp values were excluded.</p>
+              <p class="amenity-comparison-note"><strong>How I compared them:</strong> For each amenity, I compared shops Yelp listed as having it with shops listed as not having it. Shops with an unknown or missing response for that amenity were excluded.</p>
             </section>
 
             <section id="recommendation">
@@ -307,12 +312,13 @@
               <aside class="recommendation-care">
                 <h3>Read with care</h3>
                 <p>
-                  Yelp check-ins span 2010 through January 2022 and measure
-                  historical business activity rather than coffee demand alone. The
-                  analysis also compares shops marked open in the January 2022
-                  snapshot with traffic accumulated over the full historical period.
-                  The findings should narrow a site search, not make the final
-                  decision.
+                  Yelp check-ins span 2010 through January 2022. The location index
+                  uses check-ins from all Nashville businesses as a measure of overall
+                  business activity. The hours and amenity comparisons use only
+                  check-ins recorded for the classified coffee shops. The analysis
+                  also compares shops marked open in the January 2022 snapshot with
+                  activity accumulated over the full historical period. The findings
+                  should narrow a site search, not make the final decision.
                 </p>
               </aside>
               <ul class="coffee-skills" aria-label="Skills demonstrated">
