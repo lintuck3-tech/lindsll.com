@@ -11,7 +11,7 @@ window.ARTICLES = [
     published: true,
   },
   {
-    title: "A Cinderella Detention Report",
+    title: "Cinderella: A Fictional Detention Report",
     summary: "A fictional child-welfare detention report built from interviews, records, observations, and evidence.",
     href: "articles/cinderella-mock-court-report.html",
     icon: "fa-solid fa-scale-balanced",

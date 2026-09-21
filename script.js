@@ -195,13 +195,37 @@ const nextButton = carousel.querySelector(".carousel__button--next");
 const dotsContainer = carousel.querySelector(".carousel__dots");
 const thumbsContainer = carousel.querySelector(".carousel__thumbs");
 let activeSlide = 0;
+let slideRequestId = 0;
 
-const loadSlideImage = (index) => {
-  const image = slides[index]?.querySelector("img[data-src]");
+const loadSlideImage = async (index) => {
+  const image = slides[index]?.querySelector("img");
   if (!image) return;
 
-  image.src = image.dataset.src;
-  image.removeAttribute("data-src");
+  if (image.dataset.src) {
+    image.loading = "eager";
+    image.src = image.dataset.src;
+    image.removeAttribute("data-src");
+  }
+
+  if (!image.complete || image.naturalWidth === 0) {
+    await new Promise((resolve) => {
+      image.addEventListener("load", resolve, { once: true });
+      image.addEventListener("error", resolve, { once: true });
+    });
+  }
+
+  if (image.decode && image.naturalWidth > 0) {
+    try {
+      await image.decode();
+    } catch (_error) {
+      // The load event is enough when a browser cannot decode asynchronously.
+    }
+  }
+};
+
+const preloadNearbySlides = (index) => {
+  loadSlideImage((index + 1) % slides.length);
+  loadSlideImage((index - 1 + slides.length) % slides.length);
 };
 
 const renderThumbnails = () => {
@@ -225,9 +249,14 @@ const renderThumbnails = () => {
   });
 };
 
-const showSlide = (index) => {
-  activeSlide = (index + slides.length) % slides.length;
-  loadSlideImage(activeSlide);
+const showSlide = async (index) => {
+  const requestedSlide = (index + slides.length) % slides.length;
+  const requestId = ++slideRequestId;
+
+  await loadSlideImage(requestedSlide);
+  if (requestId !== slideRequestId) return;
+
+  activeSlide = requestedSlide;
   slides.forEach((slide, slideIndex) => {
     slide.classList.toggle("is-active", slideIndex === activeSlide);
   });
@@ -251,6 +280,8 @@ const showSlide = (index) => {
       behavior: "smooth",
     });
   }
+
+  preloadNearbySlides(activeSlide);
 };
 
 slides.forEach((_slide, index) => {
