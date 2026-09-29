@@ -407,7 +407,7 @@ blockquote {
   font-size: 38px;
   line-height: 1;
   text-align: right;
-  transform: rotate(10deg);
+  transform: translateY(-2.75rem) rotate(10deg);
 }
 
 .project-directory .article-row {
