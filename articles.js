@@ -4,6 +4,13 @@
  */
 window.ARTICLES = [
   {
+    title: "NCMEC CyberTipline 2025 Data Project",
+    summary: "A public-data analysis of reporting volume, provider concentration, and state- and country-level routing patterns.",
+    href: "articles/ncmec-cybertipline-2025.html",
+    icon: "fa-solid fa-shield-heart",
+    published: true,
+  },
+  {
     title: "Coffee King: Nashville Location Analysis",
     summary: "A learning-focused SQL case study using Yelp data to recommend where a fictitious coffee shop should open, when it should operate, and which amenities matter.",
     href: "articles/coffee-king-sql-analysis.html",
