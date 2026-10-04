@@ -60,6 +60,7 @@
 }
 
 .coffee-snapshot__marks .fa-crown { color: var(--marigold); font-size: 2.5rem; transform: rotate(-5deg); }
+.coffee-snapshot__marks .fa-database { color: var(--teal); font-size: 1.7rem; }
 .coffee-snapshot__marks .fa-chart-column { font-size: 1.7rem; }
 
 .coffee-cup {
