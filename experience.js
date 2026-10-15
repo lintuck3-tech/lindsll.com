@@ -9,7 +9,7 @@ const experienceRoles = [
   },
   {
     period: "2021 - 2023",
-    role: "Child Welfare Social Worker",
+    role: "Child Welfare Investigator",
     organization: "County of San Mateo",
     icon: "fa-solid fa-shield-heart",
     summary: "Led complex child-safety investigations from intake through resolution by interviewing children, caregivers, and collateral contacts; assessing risk; documenting evidence; coordinating with legal and community partners; and developing recommendations for court and ongoing safety.",
